@@ -9,11 +9,11 @@ import java.util.Date;
 @Setter
 @Getter
 @ToString
-
-public class ItemDTO {
+public class Item {
     private int id;
     private String name;
     private int price;
     private String imgname;
-    private Date regdate;
+    private Date rdate;
+
 }

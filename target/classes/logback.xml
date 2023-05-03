@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <property name="LOGS_ABSOLUTE_PATH" value="./logs" />
-
+    <!-- C > project > logs 폴더를 만들어서 log를 저장하겠습니다 -->
+    <property name="LOGS_DIR" value="c://project/logs" />
+    <property name="LOGS_CUSTINFO" value="./src/main/resources/static/logs"></property>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <Pattern>[%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %-5level %logger{36} - %msg%n</Pattern>
+            <!--            <Pattern>[%d{MM-dd HH:mm:ss}][%thread] %-5level %logger{36} - %msg%n</Pattern>-->
+            <Pattern>[%d{MM-dd HH:mm:ss}] %-5level %logger{36} - %msg%n</Pattern>
         </layout>
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOGS_ABSOLUTE_PATH}/logback.log</file>
+        <file>${LOGS_DIR}/logback.log</file>
         <encoder>
-            <pattern>[%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %-5level %logger{35} - %msg%n</pattern>
+            <!--            <pattern>[%d{MM-dd HH:mm:ss}][%thread] %-5level %logger{35} - %msg%n</pattern>-->
+            <pattern>[%d{MM-dd HH:mm:ss}] %-5level %logger{35} - %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOGS_ABSOLUTE_PATH}/logback.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <fileNamePattern>${LOGS_DIR}/logback.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>5MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+    <appender name="FILE2" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS_DIR}/custinfo.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss}, %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS_DIR}/custinfo.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>5MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -22,6 +38,7 @@
         </rollingPolicy>
     </appender>
 
+    <!--    <root level="ERROR"> &lt;!&ndash; 추가함 : ERROR 인 경우만 화면에 출력된다 &ndash;&gt;-->
     <root level="INFO"> <!-- 추가함 : ERROR 인 경우만 화면에 출력된다 -->
         <appender-ref ref="STDOUT" />
     </root>
@@ -30,14 +47,19 @@
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </logger>
-    <!--
+
+    <!-- 아래의 클래스에서 만들어지는 것을 FILE2에 저장하겠다 -->
+    <logger name="com.kbstar.controller.CustController" level="INFO">
+        <appender-ref ref="FILE2" />
+    </logger>
+
     <logger name="jdbc" level="OFF" />
-	<logger name="jdbc.sqlonly" level="DEBUG" />
-	<logger name="jdbc.sqltiming" level="DEBUG" />
-	<logger name="jdbc.audit" level="OFF" />
-	<logger name="jdbc.resultset" level="DEBUG" />
-	<logger name="jdbc.resultsettable" level="DEBUG" />
-	<logger name="jdbc.connection" level="OFF" />
-	-->
+    <logger name="jdbc.sqlonly" level="INFO" />
+    <logger name="jdbc.sqltiming" level="OFF" />
+    <logger name="jdbc.audit" level="OFF" />
+    <logger name="jdbc.resultset" level="OFF" />
+    <logger name="jdbc.resultsettable" level="INFO" />
+    <logger name="jdbc.connection" level="OFF" />
+
     <!-- INFO(trace > debug > info > warn > error)  -->
 </configuration>
