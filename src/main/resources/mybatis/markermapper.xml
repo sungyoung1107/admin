@@ -3,6 +3,17 @@
         PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kbstar.mapper.MarkerMapper">
+    <select id="search" parameterType="MarkerSearch" resultType="marker">
+        SELECT * FROM marker
+        <where>
+            <if test="loc != null and !loc.equals('')">
+                loc = UPPER(#{loc})
+            </if>
+            <if test="title != null and !title.equals('')">
+                and title LIKE '%'||#{title}||'%'
+            </if>
+        </where>
+    </select>
 
     <select id="getloc" parameterType="String" resultType="marker">
         SELECT * FROM marker WHERE loc= UPPER(#{loc})
