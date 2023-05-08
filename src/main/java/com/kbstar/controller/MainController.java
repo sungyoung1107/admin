@@ -77,6 +77,14 @@ public class MainController {
         return "redirect:/";
     }
 
+    @RequestMapping("/websocket")
+    public String websocket(Model model) {
+        log.info("웹소켓 눌림");
+        model.addAttribute("center", "websocket");
+        return "index";
+    }
+
+
     @RequestMapping("/register")
     public String register(Model model) {
         model.addAttribute("center", "register");
@@ -135,5 +143,7 @@ public class MainController {
         }
         return "redirect:/adminfo?id="+adm.getId();
     }
+
+
 
 }

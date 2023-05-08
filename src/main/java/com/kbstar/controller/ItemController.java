@@ -2,6 +2,7 @@ package com.kbstar.controller;
 
 import com.kbstar.dto.Cust;
 import com.kbstar.dto.Item;
+import com.kbstar.dto.ItemSearch;
 import com.kbstar.service.CustService;
 import com.kbstar.service.ItemService;
 import com.kbstar.util.FileUploadUtil;
@@ -89,6 +90,22 @@ public class ItemController {
 
         model.addAttribute("gitem", item);
         model.addAttribute("center", dir+"detail");
+
+        return "index";
+    }
+
+    @RequestMapping("/search")
+    public String search(Model model, ItemSearch ms) throws Exception {
+        log.info("======" + ms.getStartdate() + "======");
+        log.info("======" + ms.getEnddate() + "======");
+        log.info("======" + ms.getPrice() + "======");
+
+        List<Item> list = null;
+        list = itemService.search(ms);
+
+        model.addAttribute("ms", ms);
+        model.addAttribute("clist", list);
+        model.addAttribute("center", dir+"all");
 
         return "index";
     }
