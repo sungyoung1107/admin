@@ -40,25 +40,23 @@ public class ChartsController {
         female.put("name", "Female");
         JSONArray femaleData = new JSONArray();
 
-        for (Sales sales : salesList) {
-            if (sales.getGender().trim().equals("M")) {
-                // 매출액이 없는 경우 0으로 세팅
-                if (sales.getPrice() == null || sales.getPrice() == 0) {
-                    maleData.add(0);
-                } else {
-                    maleData.add(sales.getPrice()); // 매출액이 있는 경우 매출액 set
-                }
-            } else {
-                if (sales.getGender().trim().equals("F")) {
-                    // 매출액이 없는 경우 0으로 세팅
-                    if (sales.getPrice() == null || sales.getPrice() == 0) {
-                        femaleData.add(0);
-                    } else{
-                        femaleData.add(sales.getPrice()); // 매출액이 있는 경우 매출액 set
+        // 1~12월 돌기
+        for (int i = 1 ; i < 13 ; i++){
+            int maleSales = 0;
+            int femaleSales = 0;
+            for (Sales sales : salesList) {
+                if (Integer.parseInt(sales.getRdate()) == i) { // 해당하는 월의 데이터이면
+                    if (sales.getGender().trim().equals("M")) { // 남자인 경우
+                        maleSales += sales.getPrice();
+                    } else if (sales.getGender().trim().equals("F")) { // 여자인 경우
+                        femaleSales += sales.getPrice();
                     }
                 }
             }
+            maleData.add(maleSales);
+            femaleData.add(femaleSales);
         }
+
         male.put("data", maleData);
         female.put("data", femaleData);
 
