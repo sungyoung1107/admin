@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.rmi.server.ExportException;
 import java.util.List;
 
 @Slf4j // 로그 쓸 수 있음
@@ -51,5 +52,9 @@ public class CartService implements KBService<Integer, Cart> {
 
     public List<Cart> getMyCart(String cid) throws Exception {
         return mapper.getmycart(cid);
+    }
+
+    public double gettotal() throws Exception{
+        return mapper.gettotal();
     }
 }

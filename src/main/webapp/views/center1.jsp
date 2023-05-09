@@ -9,7 +9,15 @@
             var socket = new SockJS('${adminserver}/wss'); // StomWebSocketConfig : registry.addEndpoint("/wss").setAllowedOrigins("http://127.0.0.1").withSockJS();
             // Stomp 프로토콜을 지원하며 Stomp 메세지 지향 미들에어를 위한 프로토콜
             this.stompClient = Stomp.over(socket);
-
+            /*
+             * STOMP 서버에 연결합니다.
+             * connect() 함수의 첫번째 인자는 STOMP 서버에 전달할 옵션입니다.
+             * 이 경우에는 빈 객체({})를 전달했습니다.
+             * 연결에 성공하면 콜백 함수가 호출됩니다.
+             * 콜백 함수의 인자로 STOMP 프로토콜의 CONNECTED 프레임이 전달됩니다.
+             * this는 현재 객체를 참조합니다.
+             * /
+            // 서버로부터 받는 파트 클라이언트 연결
             this.stompClient.connect({}, function (frame) {
 
                 console.log('Connected: ' + frame);
@@ -41,10 +49,13 @@
                     $('#progress4').css('width', JSON.parse(msg.body).content4 / 10 * 100 + '%');
                     console.log(JSON.parse(msg.body).content4 / 10);
 
+                    // $("#all").prepend(
+                    //     "<h4>" + JSON.parse(msg.body).sendid +":"+
+                    //     JSON.parse(msg.body).content1
+                    //     + "</h4>");
                 });
-            })
+            }
         }
-    }
 
     $(function () {
         websocket_center.init();

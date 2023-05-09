@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class MsgController {
+
     @Autowired
     SimpMessagingTemplate template;
 
@@ -21,13 +22,13 @@ public class MsgController {
     public void receiveme(Msg msg, SimpMessageHeaderAccessor headerAccessor) {
         System.out.println(msg);
 
-        String id = msg.getSendid();
+        String id = msg.getSendid(); // 나의 id 출력
         template.convertAndSend("/send/"+id,msg);
     }
     @MessageMapping("/receiveto") // 특정 Id에게 전송
     public void receiveto(Msg msg, SimpMessageHeaderAccessor headerAccessor) {
         String id = msg.getSendid();
-        String target = msg.getReceiveid();
+        String target = msg.getReceiveid(); // 받는 id
         template.convertAndSend("/send/to/"+target,msg);
     }
 }

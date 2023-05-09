@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,9 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class MainController {
 
+    @Value("${adminserver}")
+    String adminserver;
+
     Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
     @Autowired
@@ -27,7 +31,8 @@ public class MainController {
     private BCryptPasswordEncoder encoder; // 일반적인 패스워드를 암호화 해주는 것
 
     @RequestMapping("/")
-    public String main() {
+    public String main(Model model) {
+        model.addAttribute("adminserver", adminserver);
         return "index";
     }
 
@@ -80,6 +85,7 @@ public class MainController {
     @RequestMapping("/websocket")
     public String websocket(Model model) {
         log.info("웹소켓 눌림");
+        model.addAttribute("adminserver", adminserver);
         model.addAttribute("center", "websocket");
         return "index";
     }
@@ -116,6 +122,7 @@ public class MainController {
     @RequestMapping("/livechart")
     public String livechart(Model model) {
         model.addAttribute("center", "livechart");
+        model.addAttribute("adminserver", adminserver);
         return "index";
     }
 

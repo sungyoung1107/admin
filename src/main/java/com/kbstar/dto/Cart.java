@@ -23,6 +23,9 @@ public class Cart {
     private int item_price;
     private String item_imgname;
 
+    // 합계 금액
+    private double total;
+
     public Cart(int id, int item_id, int cnt) {
         this.id = id;
         this.item_id = item_id;

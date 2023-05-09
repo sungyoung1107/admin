@@ -10,14 +10,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Value("${imgdir}") // application.properties 안에 지정함
     String imgdir;
-//    @Value("${logdir}") // application.properties 안에 지정함
-//    String logdir;
+    @Value("${logdir}") // application.properties 안에 지정함
+    String logdir;
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // c 경로로 되어 있는 것도 127.0.0.1/logs 하면 접속이 되게끔 한다.
         registry.addResourceHandler("/uimg/**").addResourceLocations(imgdir);
-//        registry.addResourceHandler("/logs/**").addResourceLocations(logdir);
+        registry.addResourceHandler("/logs/**").addResourceLocations(logdir);
 
     }
 

@@ -28,7 +28,7 @@
 <script>
     let websocket = {
         id:null,
-        stompClient:null,
+        stompClient:null, // 웹 소켓 통신을 사용하여 서버와 클라이언트 간의 실시간 양방향 통신을 가능하게 해주는 JS 라이브러리
         init:function(){
             this.id = $('#adm_id').text();
             $("#connect").click(function() {
@@ -49,12 +49,27 @@
         },
         connect:function(){
             var sid = this.id;
-            var socket = new SockJS('http://127.0.0.1:8088/ws');
+            // alert("sid는 " + this.id); // sid는 mung123
+            var socket = new SockJS('${adminserver}/ws');
+            // Stomp 프로토콜을 지원하며 Stomp 메세지 지향 미들에어를 위한 프로토콜
             this.stompClient = Stomp.over(socket);
-
+            /*
+             * STOMP 서버에 연결합니다.
+             * connect() 함수의 첫번째 인자는 STOMP 서버에 전달할 옵션입니다.
+             * 이 경우에는 빈 객체({})를 전달했습니다.
+             * 연결에 성공하면 콜백 함수가 호출됩니다.
+             * 콜백 함수의 인자로 STOMP 프로토콜의 CONNECTED 프레임이 전달됩니다.
+             * this는 현재 객체를 참조합니다.
+             */
+            // 서버로부터 받는 파트 클라이언트 연결
             this.stompClient.connect({}, function(frame) {
                 websocket.setConnected(true);
                 console.log('Connected: ' + frame);
+                /*
+                 * /send 주제를 구독합니다. 해당 주제로 메시지가 발송되면 콜백 함수가 호출됩니다.
+                 * msg는 수신된 메시지를 의미합니다.
+                 * 수신된 메시지를 HTML 태그로 변환하여 웹 페이지에 표시합니다.
+                 */
                 this.subscribe('/send', function(msg) {
                     $("#all").prepend(
                         "<h4>" + JSON.parse(msg.body).sendid +":"+
@@ -89,10 +104,14 @@
             }
         },
         sendAll:function(){
+            // msg는 json 형태
             var msg = JSON.stringify({
                 'sendid' : this.id,
                 'content1' : $("#alltext").val()
             });
+            // "/receiveall"은 메세지를 전송할 대상 주제를 나타냄
+            // {} 헤더 정보
+            // msg 앞선 json
             this.stompClient.send("/receiveall", {}, msg);
         },
         sendTo:function(){
