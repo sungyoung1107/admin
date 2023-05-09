@@ -26,41 +26,84 @@ public class ChartsController {
     SalesService salesService = new SalesService();
 
     @RequestMapping("/groupSales")
-//    @Scheduled(cron = "*/10 * * * * *")
     public Object groupSales(Model model) throws Exception {
-        List<Sales> list = null;
-        list = salesService.groupsales();
-        
-        // data : { labels:[], datasets[{data: []}]}
-        JSONObject joData = new JSONObject();
+        // series : [ { 'name' : 'Male', 'data' : []}, {'name' : 'Female', 'data' : []} ]
+        List<Sales> salesList = salesService.groupsales();
 
-        // 월 매출액
-        JSONArray jaLabel = new JSONArray();
-        for(int i =1 ; i <13 ; i++) {
-            jaLabel.add(i);
-        }
-        JSONObject joInnerData = new JSONObject();
-        // innerdata
-        JSONArray jaInnerData = new JSONArray();
-        for (Sales sales : list){
-            // 매출액이 없는 경우 0으로 세팅
-            if(sales.getPrice() == null || sales.getPrice() == 0){
-                jaInnerData.add(0);
-                continue; // 아래구문 패스
+        JSONArray series = new JSONArray();
+
+        JSONObject male = new JSONObject();
+        male.put("name", "Male");
+        JSONArray maleData = new JSONArray();
+
+        JSONObject female = new JSONObject();
+        female.put("name", "Female");
+        JSONArray femaleData = new JSONArray();
+
+        for (Sales sales : salesList) {
+            if (sales.getGender().trim().equals("M")) {
+                // 매출액이 없는 경우 0으로 세팅
+                if (sales.getPrice() == null || sales.getPrice() == 0) {
+                    maleData.add(0);
+                } else {
+                    maleData.add(sales.getPrice()); // 매출액이 있는 경우 매출액 set
+                }
+            } else {
+                if (sales.getGender().trim().equals("F")) {
+                    // 매출액이 없는 경우 0으로 세팅
+                    if (sales.getPrice() == null || sales.getPrice() == 0) {
+                        femaleData.add(0);
+                    } else{
+                        femaleData.add(sales.getPrice()); // 매출액이 있는 경우 매출액 set
+                    }
+                }
             }
-            jaInnerData.add(sales.getPrice()); // 매출액이 있는 경우 매출액 set
-        } // [XXX, XXX, XXX, ....]
-        joInnerData.put("data", joInnerData); // {data: []}
+        }
+        male.put("data", maleData);
+        female.put("data", femaleData);
 
-        // datasets
-        JSONArray jaDatasets = new JSONArray();
-        jaDatasets.add(joInnerData); // [{data: []}]
+        series.add(male);
+        series.add(female);
 
-        joData.put("labels", jaLabel); // labels : [1,2,3,4,5,6,7,8,9,10,11,12]
-        joData.put("datasets", jaDatasets); // datasets: [{data: []}]
-
-//        messagingTemplate.convertAndSend("/senddata", joData);
-        return joData;
+        return series;
     }
+
+
+//    @RequestMapping("/groupSales")
+//    @Scheduled(cron = "*/10 * * * * *")
+//    public Object groupSales(Model model) throws Exception {
+//        List<Sales> list = null;
+//        list = salesService.groupsales();
+//
+//        // data : { labels:[], datasets[{data: []}]}
+//        JSONObject joData = new JSONObject();
+//
+//        // 월 매출액
+//        JSONArray jaLabel = new JSONArray();
+//        for(int i =1 ; i <13 ; i++) {
+//            jaLabel.add(i);
+//        }
+//        JSONObject joInnerData = new JSONObject();
+//        // innerdata
+//        JSONArray jaInnerData = new JSONArray();
+//        for (Sales sales : list){
+//            // 매출액이 없는 경우 0으로 세팅
+//            if(sales.getPrice() == null || sales.getPrice() == 0){
+//                jaInnerData.add(0);
+//                continue; // 아래구문 패스
+//            }
+//            jaInnerData.add(sales.getPrice()); // 매출액이 있는 경우 매출액 set
+//        } // [XXX, XXX, XXX, ....]
+//        joInnerData.put("data", joInnerData); // {data: []}
+//
+//        // datasets
+//        JSONArray jaDatasets = new JSONArray();
+//        jaDatasets.add(joInnerData); // [{data: []}]
+//
+//        joData.put("labels", jaLabel); // labels : [1,2,3,4,5,6,7,8,9,10,11,12]
+//        joData.put("datasets", jaDatasets); // datasets: [{data: []}]
+//
+//        return joData;
+//    }
 
 }

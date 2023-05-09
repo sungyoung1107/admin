@@ -36,29 +36,29 @@ public class ScheduleController {
 
     // Annotation이 중요, 함수명이 중요한 것이 아님
     // 5초마다 작업해서 관리자 화면에 찍자!!!
-    @Scheduled(cron = "*/5 * * * * *")
-    public void cronJobDailyUpdate() {
-
-//        log.info("----------- Scheduler ------------");
-
-        Random r = new Random();
-        int content1 = r.nextInt(100)+1;
-        int content2 = r.nextInt(1000)+1;
-        int content3 = r.nextInt(500)+1;
-        int content4 = r.nextInt(10)+1;
-
-        MsgAdm msg = new MsgAdm();
-        msg.setContent1(content1);
-        msg.setContent2(content2);
-        msg.setContent3(content3);
-        msg.setContent4(content4);
-
-        // 15초마다 msg 작업해서 sendadm 경로로 보낸다. StomWebSocketConfig에 고쳐줘야 함
-        messagingTemplate.convertAndSend("/sendadm", msg);
-        
-    }
-
-    // 8초마다 로그를 찍자!!!!
+//    @Scheduled(cron = "*/5 * * * * *")
+//    public void cronJobDailyUpdate() {
+//
+////        log.info("----------- Scheduler ------------");
+//
+//        Random r = new Random();
+//        int content1 = r.nextInt(100)+1;
+//        int content2 = r.nextInt(1000)+1;
+//        int content3 = r.nextInt(500)+1;
+//        int content4 = r.nextInt(10)+1;
+//
+//        MsgAdm msg = new MsgAdm();
+//        msg.setContent1(content1);
+//        msg.setContent2(content2);
+//        msg.setContent3(content3);
+//        msg.setContent4(content4);
+//
+//        // 15초마다 msg 작업해서 sendadm 경로로 보낸다. StomWebSocketConfig에 고쳐줘야 함
+//        messagingTemplate.convertAndSend("/sendadm", msg);
+//
+//    }
+//
+//    // 8초마다 로그를 찍자!!!!
 //    @Scheduled(cron = "*/8 * * * * *")
 //    public void cronJobWeeklyUpdate() throws Exception {
 //        double num = cartService.gettotal();

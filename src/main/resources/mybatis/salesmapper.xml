@@ -11,9 +11,9 @@
         INSERT INTO sales VALUES (TO_DATE(#{rdate}, 'YYYY-MM-DD'),#{price},#{gender})
     </insert>
     <select id="groupsales" resultType="sales">
-        select extract(month from rdate) as rdate, sum(price) as price
+        select extract(month from rdate) as rdate, gender, sum(price) as price
         from sales
-        group by extract(month from rdate)
+        group by extract(month from rdate), gender
         order by rdate
     </select>
 
