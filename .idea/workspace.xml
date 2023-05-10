@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0be9cf29-2f89-4857-a90f-107422f5d2e6" name="Changes" comment="2023-05-09">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kbstar/dto/Chart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kbstar/mapper/ChartMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kbstar/service/ChartService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis/chartmapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/kbstar/chart/MonthlyTotalTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kbstar/controller/ChartsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kbstar/controller/ChartsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kbstar/controller/AjaxImplController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kbstar/controller/AjaxImplController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kbstar/controller/ScheduleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kbstar/controller/ScheduleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/demo/chart-area-demo1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kbstar/controller/ChartsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kbstar/controller/ChartsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/demo/chart-area-demo1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/center.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/center.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/center1.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/center_my.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kbstar/controller/AjaxImplController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kbstar/controller/AjaxImplController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +30,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
@@ -47,35 +55,41 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/spring/admin",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propCompiler",
-    "spring.configuration.checksum": "21232f297a57a5a743894a0e4a801fc3",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/spring/admin/src/test/java/com/kbstar/Chart&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;21232f297a57a5a743894a0e4a801fc3&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\spring\admin\src\test\java\com\kbstar\Chart" />
+      <recent name="C:\spring\admin\src\main\resources\mybatis" />
       <recent name="C:\spring\admin\src\main\webapp\views" />
       <recent name="C:\spring\admin\src\main\resources\static\js\demo" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\spring\admin\src\main\webapp\views" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.kbstar.Chart" />
+      <recent name="com.kbstar.mapper" />
       <recent name="com.kbstar.controller" />
       <recent name="com.kbstar.sales" />
       <recent name="com.kbstar.cart" />
-      <recent name="com.kbstar.dto" />
     </key>
   </component>
   <component name="RunManager">
@@ -89,6 +103,22 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.kbstar.sales" />
       <option name="MAIN_CLASS_NAME" value="com.kbstar.sales.GroupSalesTest" />
+      <option name="METHOD_NAME" value="contextLoads" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MonthlyTotalTest.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="admin" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.kbstar.chart.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.kbstar.Chart" />
+      <option name="MAIN_CLASS_NAME" value="com.kbstar.chart.MonthlyTotalTest" />
       <option name="METHOD_NAME" value="contextLoads" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -120,6 +150,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.MonthlyTotalTest.contextLoads" />
         <item itemvalue="JUnit.GroupSalesTest.contextLoads" />
         <item itemvalue="JUnit.TotalTest.contextLoads" />
       </list>
@@ -141,7 +172,9 @@
       <workItem from="1683610477985" duration="15288000" />
       <workItem from="1683627266109" duration="5632000" />
       <workItem from="1683632973315" duration="41000" />
-      <workItem from="1683637102061" duration="105000" />
+      <workItem from="1683637102061" duration="201000" />
+      <workItem from="1683676701146" duration="8247000" />
+      <workItem from="1683691386758" duration="859000" />
     </task>
     <task id="LOCAL-00001" summary="2023-05-09">
       <created>1683624297965</created>
@@ -164,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683632992072</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="2023-05-09">
+      <created>1683637277087</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683637277087</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,5 +224,20 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="2023-05-09" />
     <option name="LAST_COMMIT_MESSAGE" value="2023-05-09" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/com/kbstar/chart/MonthlyTotalTest.java</url>
+          <line>21</line>
+          <properties class="com.kbstar.chart.MonthlyTotalTest" method="contextLoads">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

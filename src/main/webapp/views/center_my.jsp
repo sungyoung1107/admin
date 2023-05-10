@@ -3,21 +3,14 @@
         stompClient: null, // 웹 소켓 통신을 사용하여 서버와 클라이언트 간의 실시간 양방향 통신을 가능하게 해주는 JS 라이브러리
         init       : function () {
             websocket_center.connect();
+            websocket_center.getData();
         },
         connect    : function () {
             var sid = this.id;
             var socket = new SockJS('${adminserver}/wss'); // StomWebSocketConfig : registry.addEndpoint("/wss").setAllowedOrigins("http://127.0.0.1").withSockJS();
             // Stomp 프로토콜을 지원하며 Stomp 메세지 지향 미들에어를 위한 프로토콜
             this.stompClient = Stomp.over(socket);
-            /*
-             * STOMP 서버에 연결합니다.
-             * connect() 함수의 첫번째 인자는 STOMP 서버에 전달할 옵션입니다.
-             * 이 경우에는 빈 객체({})를 전달했습니다.
-             * 연결에 성공하면 콜백 함수가 호출됩니다.
-             * 콜백 함수의 인자로 STOMP 프로토콜의 CONNECTED 프레임이 전달됩니다.
-             * this는 현재 객체를 참조합니다.
-             * /
-            // 서버로부터 받는 파트 클라이언트 연결
+
             this.stompClient.connect({}, function (frame) {
 
                 console.log('Connected: ' + frame);
@@ -49,19 +42,110 @@
                     $('#progress4').css('width', JSON.parse(msg.body).content4 / 10 * 100 + '%');
                     console.log(JSON.parse(msg.body).content4 / 10);
 
-                    // $("#all").prepend(
-                    //     "<h4>" + JSON.parse(msg.body).sendid +":"+
-                    //     JSON.parse(msg.body).content1
-                    //     + "</h4>");
                 });
-            }
+            })
+        },
+        getData : function(){
+            $.ajax({
+                url: '/groupSales',
+                success: function(result){
+                    console.log(result);
+                    websocket_center.display(result);
+                }
+            });
+        },
+        display: function (result) {
+            Highcharts.chart('myStatisticsChart1', {
+                chart      : {
+                    type: 'spline'
+                },
+                title      : {
+                    text: 'Monthly Sales by Gender'
+                },
+                subtitle   : {
+                    text: 'Source: ' +
+                        '<a href="https://en.wikipedia.org/wiki/List_of_cities_by_average_temperature" ' +
+                        'target="_blank">Wikipedia.com</a>'
+                },
+                xAxis      : {
+                    categories   : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    accessibility: {
+                        description: 'Months of the year'
+                    }
+                },
+                yAxis      : {
+                    title : {
+                        text: 'Sales'
+                    },
+                    labels: {
+                        formatter: function () {
+                            return this.value;
+                        }
+                    }
+                },
+                tooltip    : {
+                    crosshairs: true,
+                    shared    : true
+                },
+                plotOptions: {
+                    spline: {
+                        marker: {
+                            radius   : 4,
+                            lineColor: '#666666',
+                            lineWidth: 1
+                        }
+                    }
+                },
+                series     : [{
+                    name  : result[0].name,
+                    marker: {
+                        symbol: 'square'
+                    },
+                    // data  : [5.2, 5.7, 8.7, 13.9, 18.2, 21.4, 25.0, {
+                    //     y            : 26.4,
+                    //     marker       : {
+                    //         symbol: 'circle'
+                    //     },
+                    //     accessibility: {
+                    //         description: 'Sunny symbol, this is the warmest point in the chart.'
+                    //     }
+                    // }, 22.8, 17.5, 12.1, 7.6]
+                    data : result[0].data
+
+                }, {
+                    name  : result[1].name,
+                    marker: {
+                        symbol: 'diamond'
+                    },
+                    // data  : [{
+                    //     y            : 1.5,
+                    //     marker       : {
+                    //         symbol: 'square'
+                    //     },
+                    //     accessibility: {
+                    //         description: 'Snowy symbol, this is the coldest point in the chart.'
+                    //     }
+                    // }, 1.6, 3.3, 5.9, 10.5, 13.5, 14.5, 14.4, 11.5, 8.7, 4.7, 2.6]
+                    data : result[1].data
+                }]
+            });
         }
+    };
 
     $(function () {
         websocket_center.init();
     });
+
 </script>
 
+<style>
+    #myStatisticsChart1 {
+        width: 800px;
+        height: 300px;
+        border: 1px solid grey;
+    }
+</style>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -200,9 +284,7 @@
             </div>
         </div>
 
-
         <!-- Content Row -->
-
         <div class="row">
 
             <!-- Area Chart -->
@@ -211,7 +293,7 @@
                     <!-- Card Header - Dropdown -->
                     <div
                             class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Monthly Sales by Gender</h6>
                         <div class="dropdown no-arrow">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -230,7 +312,8 @@
                     <!-- Card Body -->
                     <div class="card-body">
                         <div class="chart-area">
-                            <canvas id="myAreaChart"></canvas>
+                            <%--                            <canvas id="myAreaChart"></canvas>--%>
+                            <div id="myStatisticsChart1"></div>
                         </div>
                     </div>
                 </div>
