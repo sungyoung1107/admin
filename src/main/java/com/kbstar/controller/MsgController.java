@@ -31,4 +31,5 @@ public class MsgController {
         String target = msg.getReceiveid(); // 받는 id
         template.convertAndSend("/send/to/"+target,msg);
     }
+
 }

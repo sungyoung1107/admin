@@ -90,6 +90,13 @@ public class MainController {
         return "index";
     }
 
+    @RequestMapping("/callcenter")
+    public String callcenter(Model model) {
+        model.addAttribute("adminserver", adminserver);
+        model.addAttribute("center", "callcenter");
+        return "index";
+    }
+
 
     @RequestMapping("/register")
     public String register(Model model) {
@@ -125,6 +132,7 @@ public class MainController {
         model.addAttribute("adminserver", adminserver);
         return "index";
     }
+
 
     @RequestMapping("/adminfo")
     public String adminfo(Model model, String id) throws Exception {

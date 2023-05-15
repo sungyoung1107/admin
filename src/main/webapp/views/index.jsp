@@ -174,6 +174,13 @@
         </li>
         <c:if test="${loginadm!=null}">
             <li class="nav-item">
+                <a class="nav-link" href="/callcenter">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>1:1</span></a>
+            </li>
+        </c:if>
+        <c:if test="${loginadm!=null}">
+            <li class="nav-item">
                 <a class="nav-link" href="/websocket">
                     <i class="fas fa-fw fa-table"></i>
                     <span>websocket</span></a>

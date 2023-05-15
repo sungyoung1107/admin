@@ -18,9 +18,12 @@ public class StomWebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
     // StompEndpointRegistrys는 STOMP 연결을 등록하는 인터페이스
     // 다음과 같이 /ws, /chbot, /wss 경로를 각각 STOMP 연결 엔드포인트로 등록합니다.
+        // 이거 안해주면 CORS 에러 남
         // 관리자 사용자가 접속하여 채팅을 하는 경로
+        // 2. ok. chbot 허용할게
         registry.addEndpoint("/ws").setAllowedOrigins("http://127.0.0.1", serviceserver, "http://172.16.21.44").withSockJS();
-        registry.addEndpoint("/chbot").setAllowedOrigins("http://127.0.0.1").withSockJS();
+        // 챗봇 경로. 나의 서버에서 서비스 서버가 접속 가능하도록 하겠다.
+        registry.addEndpoint("/chbot").setAllowedOrigins("http://127.0.0.1", serviceserver).withSockJS();
         // 관리자로 접속해서 dashboard를 보는 경로
         registry.addEndpoint("/wss").setAllowedOrigins("http://127.0.0.1").withSockJS();
     }
@@ -32,9 +35,11 @@ public class StomWebSocketConfig implements WebSocketMessageBrokerConfigurer {
      * 예제에서는 /send 채널을 특정 사용자에게 메시지를 전달하는 데 사용하고 있습니다.
      * /broadcast 채널은 해당 예제에서 사용되지 않았지만, 모든 클라이언트에게 메시지를 전달할 때 사용될 수 있습니다.
      */
+    // 나갈 때(jsp에서 subscribe로 받을 떄, 즉, 컨트롤러에서 template.convertAndSend("/chsend/"+target, msg) 이것 임
+    //
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
-        registry.enableSimpleBroker("/send", "/sendadm");
+        registry.enableSimpleBroker("/send", "/sendadm","/chsend");
     }
     // 각각 send, broadcast는 inbound, outbound
     // send는 클라이언트가 서버로 보낼 떄, broadcasat는 서버가 클라이언트로 보낼 때
