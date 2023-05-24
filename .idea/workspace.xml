@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="admin:war" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0be9cf29-2f89-4857-a90f-107422f5d2e6" name="Changes" comment="2023-05-12">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kbstar/controller/ChatbotController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/kbstar/util/ChatBotUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/views/callcenter.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/kbstar/ncp/ChatbotTest.java" afterDir="false" />
+    <list default="true" id="0be9cf29-2f89-4857-a90f-107422f5d2e6" name="Changes" comment="2023-05-15">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/kbstar/LoginCheckInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kbstar/StomWebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kbstar/StomWebSocketConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kbstar/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kbstar/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/kbstar/WebMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kbstar/WebMvcConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/kbstar/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kbstar/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/kbstar/controller/MsgController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/kbstar/controller/MsgController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kbstar/StomWebSocketConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kbstar/StomWebSocketConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/kbstar/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kbstar/WebSecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/item/add.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/item/add.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/item/all.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/item/all.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/kbstar/WebMvcConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kbstar/WebMvcConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/kbstar/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/kbstar/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/logback.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,12 +68,15 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/spring/admin",
+    "last_opened_file_path": "C:/spring/admin/src/main/webapp/views/item",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "advanced.settings",
     "spring.configuration.checksum": "21232f297a57a5a743894a0e4a801fc3",
     "vue.rearranger.settings.migration": "true"
@@ -76,10 +84,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\spring\admin\src\main\webapp\views\item" />
+      <recent name="C:\spring\admin\src\main\java\com\kbstar" />
       <recent name="C:\spring\admin\src\main\webapp\views" />
       <recent name="C:\spring\admin\src\test\java\com\kbstar\Chart" />
       <recent name="C:\spring\admin\src\main\resources\mybatis" />
-      <recent name="C:\spring\admin\src\main\resources\static\js\demo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\spring\admin\src\main\webapp\views" />
@@ -92,7 +101,7 @@
       <recent name="com.kbstar.sales" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ChatbotTest.contextLoad">
+  <component name="RunManager">
     <configuration name="ChatbotTest.contextLoad" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="admin" />
       <extension name="coverage">
@@ -201,7 +210,17 @@
       <workItem from="1683876666048" duration="4219000" />
       <workItem from="1684104761309" duration="3676000" />
       <workItem from="1684112152251" duration="17094000" />
-      <workItem from="1684139306248" duration="2900000" />
+      <workItem from="1684139306248" duration="5037000" />
+      <workItem from="1684153938516" duration="4837000" />
+      <workItem from="1684249425171" duration="2420000" />
+      <workItem from="1684281507625" duration="171000" />
+      <workItem from="1684281864622" duration="7871000" />
+      <workItem from="1684321906645" duration="3918000" />
+      <workItem from="1684368795680" duration="5309000" />
+      <workItem from="1684395116762" duration="1253000" />
+      <workItem from="1684454494042" duration="47000" />
+      <workItem from="1684728287815" duration="1911000" />
+      <workItem from="1684889841352" duration="5631000" />
     </task>
     <task id="LOCAL-00001" summary="2023-05-09">
       <created>1683624297965</created>
@@ -245,7 +264,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683881693888</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="2023-05-15">
+      <created>1684144730701</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1684144730701</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +292,8 @@
     <MESSAGE value="2023-05-09" />
     <MESSAGE value="2023-05-10" />
     <MESSAGE value="2023-05-12" />
-    <option name="LAST_COMMIT_MESSAGE" value="2023-05-12" />
+    <MESSAGE value="2023-05-15" />
+    <option name="LAST_COMMIT_MESSAGE" value="2023-05-15" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -282,8 +309,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/views/login.jsp</url>
-          <line>61</line>
+          <line>62</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/kbstar/controller/MarkerController.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/views/cust/detail.jsp</url>
+          <line>48</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/views/item/all.jsp</url>
+          <line>97</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/views/item/all.jsp</url>
+          <line>99</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

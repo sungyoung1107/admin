@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <!-- C > project > logs 폴더를 만들어서 log를 저장하겠습니다 -->
-    <property name="LOGS_DIR" value="c://project/logs" />
+<!--    <property name="LOGS_DIR" value="c://project/logs" />-->
+    <property name="LOGS_DIR" value="/root/logs" />
     <property name="LOGS_CUSTINFO" value="./src/main/resources/static/logs"></property>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">

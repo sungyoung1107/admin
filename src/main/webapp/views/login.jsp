@@ -36,6 +36,7 @@
         <div class="card-body">
             <div id="container">
                 <form class="form-horizontal" id="login_form" action="">
+                    <input type="hidden" name="redirectURL" value="${redirectURL}">
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="id">아이디</label>
                         <div class="col-sm-10">

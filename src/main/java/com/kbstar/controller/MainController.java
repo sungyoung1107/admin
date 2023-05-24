@@ -37,14 +37,16 @@ public class MainController {
     }
 
     @RequestMapping("/login")
-    public String login(Model model) {
+    public String login(Model model, String redirectURL) {
+        model.addAttribute("redirectURL", redirectURL); // 다음페이지를 숨겨 놓고
         model.addAttribute("center", "login");
         return "index";
     }
 
+    // 로그인 임플 할 때 숨겨놓은 redirectURL로 갈 수 있도록
     @RequestMapping("/loginimpl")
     public String loginimpl(Model model, String id, String pwd,
-                            HttpSession session) throws Exception {
+                            HttpSession session, String redirectURL) throws Exception {
         Adm adm = null;
         String nextPage = "loginfail";
 
@@ -54,6 +56,11 @@ public class MainController {
                 nextPage="loginok";
                 session.setMaxInactiveInterval(100000);
                 session.setAttribute("loginadm", adm);
+                if (redirectURL == null || redirectURL.equals("")) {
+                    return "redirect:/";
+                }else {
+                    return "redirect:"+redirectURL;
+                }
             }
         } catch (Exception e){
             throw new Exception("잠시 후에 다시 시도해 주시기 바랍니다.");
